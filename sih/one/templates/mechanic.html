@@ -1,0 +1,80 @@
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Mechanic</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+  </head>
+  <body onload="display({{list}})">
+    <div class="container">
+        <h3>YOUR MECHANIC</h3>
+        <div id="hi" class="col">
+            <div class="card" style="width: 18rem;">
+                <ul class="list-group list-group-flush">
+                  <li class="list-group-item">Name: Vimal</li>
+                  <li class="list-group-item">Phone: 9440942366</li>
+                  <li class="list-group-item">Service Center: Service lines</li>
+                </ul>
+              </div>
+        </div>
+        <br>
+        <div class="col">
+            <form action="" method="post">
+                {{data.hidden_tag()}}
+                Choose a spare vehicle from the available list:
+                <br>
+                <select name="spare_vehicle">
+                    <option value="0">--Select spare vehicle--</option>
+                    <option value="1">Car</option>
+                    <option value="2">Bike</option>
+                    <option value="3">Auto</option>
+                    <option value="4">Van</option>
+                </select>
+                <br><br>
+                <input type="submit" value="Confirm">
+            </form>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
+  </body>
+
+<script>
+function display(l){
+console.log(l);
+var i;
+    for(i=0;i<l.length;i++){
+const box=document.createElement("div");
+box.classList.add("card");
+box.style.width="18rem";
+
+const list=document.createElement("ul");
+list.classList.add("list-group");
+list.classList.add("list-group-flush");
+
+const txt=document.createTextNode("Name: "+l[i][2]);
+const name=document.createElement("li");
+name.classList.add("list-group-item");
+name.appendChild(txt);
+list.append(name);
+
+const txt1=document.createTextNode("Phone: "+l[i][1]);
+const name1=document.createElement("li");
+name1.classList.add("list-group-item");
+name1.appendChild(txt1);
+list.append(name1);
+
+const txt2=document.createTextNode("Service Center: "+l[i][6]);
+const name2=document.createElement("li");
+name2.classList.add("list-group-item");
+name2.appendChild(txt2);
+list.append(name2);
+
+box.appendChild(list);
+const line=document.createElement("br");
+box.appendChild(line);
+document.getElementById("hi").appendChild(box);
+    }
+}
+</script>
+</html>
